@@ -1,0 +1,615 @@
+:root {
+  --bg-dark: #1a1a2e;
+  --text-light: #e0e0e0;
+  --accent-blue: #00bcd4; /* Cyan */
+  --accent-glow: #00bcd4;
+  --card-bg: #2b2b4d;
+  --border-color: #3f3f6c;
+  --hover-effect: #4a4a7a;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  overflow: hidden;
+  padding: 30px 0;
+}
+
+header {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #3a3a5e 100%);
+  color: #fff;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid var(--accent-blue);
+  position: relative;
+  z-index: 10;
+}
+
+.hero-content {
+  animation: fadeInDown 1s ease-out;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.8em;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+header p {
+  margin-top: 5px;
+  font-size: 1.3em;
+  color: #b0b0d0;
+}
+
+header nav ul {
+  padding: 0;
+  list-style: none;
+  margin-top: 30px;
+}
+
+header nav ul li {
+  display: inline-block;
+  padding: 0 20px;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+header nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-blue);
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+header nav a:hover {
+  color: var(--accent-blue);
+  text-shadow: 0 0 8px var(--accent-glow);
+}
+
+header nav a:hover::after {
+  width: 100%;
+}
+
+.section {
+  padding: 40px 30px;
+  margin-bottom: 30px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  border: 1px solid var(--border-color);
+  position: relative;
+  opacity: 0; /* For reveal animation */
+  transform: translateY(20px); /* For reveal animation */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section h2 {
+  color: var(--accent-blue);
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  font-size: 2em;
+  text-align: center;
+  text-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
+}
+
+/* Card effect for experience, projects, education items */
+.card {
+  background: #3a3a5e;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 15px var(--accent-glow);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.skill-category {
+  background: #3a3a5e;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 0 8px rgba(0, 188, 212, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.skill-category:hover {
+  background: #4a4a7a;
+  transform: translateY(-3px);
+}
+
+.skill-category h3 {
+  color: var(--accent-blue);
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px dotted var(--accent-blue);
+  padding-bottom: 8px;
+}
+
+.skill-category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skill-category ul li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.skill-category ul li::before {
+  content: '•'; /* Bullet point for list items */
+  color: var(--accent-blue);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.2em;
+}
+
+
+.experience-item h3, .project-item h3, .education-item h3 {
+  margin-top: 0;
+  color: var(--text-light);
+  font-size: 1.5em;
+}
+
+.experience-item h4 {
+  margin-bottom: 8px;
+  color: #b0b0d0;
+  font-size: 1.1em;
+}
+
+.experience-item .date, .education-item .date, .project-item .date {
+  font-size: 0.9em;
+  color: #888;
+  margin-bottom: 15px;
+  display: block;
+  font-style: italic;
+}
+
+.experience-item ul, .project-item ul, .education-item ul {
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+}
+.experience-item ul li, .project-item ul li, .education-item ul li {
+  position: relative;
+  padding-left: 25px; /* Space for custom bullet */
+  margin-bottom: 10px;
+}
+
+.experience-item ul li::before, .project-item ul li::before, .education-item ul li::before {
+  content: '»'; /* Custom bullet point */
+  color: var(--accent-blue);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+
+.freelance-client {
+  margin-top: 25px;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 20px;
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 5px var(--accent-glow);
+}
+
+/* Chatbot styles */
+.chatbot-container {
+  background: #2b2b4d;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.3); /* Chatbot specific glow */
+}
+
+#chatbot-messages {
+  height: 250px;
+  overflow-y: auto;
+  border: 1px solid #4a4a7a;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #1a1a2e;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 0.95em;
+}
+
+.user-message {
+  background-color: #007bff; /* Brighter blue for user */
+  align-self: flex-end;
+  color: white;
+}
+
+.bot-message {
+  background-color: #4a4a7a;
+  align-self: flex-start;
+  color: var(--text-light);
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9em;
+  color: #aaa;
+  margin-top: 5px;
+  animation: pulse 1.5s infinite;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  background-color: #aaa;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+
+.chatbot-input-area {
+  display: flex;
+  gap: 10px;
+}
+
+#chatbot-input {
+  flex-grow: 1;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #1a1a2e;
+  color: var(--text-light);
+  font-size: 1em;
+  outline: none;
+  box-shadow: inset 0 0 5px rgba(0, 188, 212, 0.1);
+}
+
+#chatbot-input::placeholder {
+  color: #888;
+}
+
+#chatbot-send {
+  padding: 12px 20px;
+  background-color: var(--accent-blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#chatbot-send:hover {
+  background-color: #0097a7;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: linear-gradient(135deg, #3a3a5e 0%, var(--bg-dark) 100%);
+  color: #b0b0d0;
+  margin-top: 50px;
+  border-top: 2px solid var(--border-color);
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+  header h1 {
+      font-size: 2.2em;
+  }
+  header p {
+      font-size: 1em;
+  }
+  header nav ul li {
+      display: block;
+      padding: 8px 0;
+  }
+  .skills-grid {
+      grid-template-columns: 1fr;
+  }
+  .section {
+      padding: 25px 15px;
+  }
+  .chatbot-container {
+      padding: 15px;
+  }
+}
+
+/* Previous CSS remains */
+
+/* Chatbot Icon Styles */
+#chatbot-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--accent-blue);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8em;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+#chatbot-icon:hover {
+  transform: translateY(-5px) scale(1.05);
+  background-color: #0097a7;
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.6);
+}
+
+/* Chatbot Container Styles (now with toggleable visibility) */
+#chatbot-container {
+  position: fixed;
+  bottom: 100px; /* Adjust to be above the icon */
+  right: 30px;
+  width: 380px; /* Slightly adjusted width */
+  max-width: 90vw; /* Responsive for smaller screens */
+  background: #2b2b4d;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+  z-index: 999;
+  display: none; /* Hidden by default */
+  flex-direction: column; /* To manage internal layout */
+}
+
+.chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 10px;
+}
+
+.chatbot-header h3 {
+  margin: 0;
+  color: var(--accent-blue);
+  font-size: 1.2em;
+}
+
+#chatbot-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#chatbot-close-btn:hover {
+  color: var(--accent-blue);
+}
+
+#chatbot-messages {
+  flex-grow: 1; /* Allows messages to take available height */
+  height: 250px; /* Set a fixed height */
+  overflow-y: auto;
+  border: 1px solid #4a4a7a;
+  padding: 15px;
+  margin: 0 15px 15px 15px; /* Adjust margins */
+  background: #1a1a2e;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chatbot-input-area {
+  display: flex;
+  gap: 10px;
+  padding: 0 15px 15px 15px; /* Adjust padding */
+}
+
+/* Responsive adjustment for chatbot */
+@media (max-width: 768px) {
+  #chatbot-icon {
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
+  }
+
+  #chatbot-container {
+      bottom: 80px;
+      right: 20px;
+      width: calc(100vw - 40px); /* Fill most of the screen width */
+  }
+}
+
+/* Previous CSS remains */
+
+/* --- Image and Icon Specific Styles --- */
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Makes it circular */
+  object-fit: cover; /* Ensures image covers the area without distortion */
+  border: 3px solid var(--accent-blue);
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.7);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+/* Skill Icons */
+.skill-icon,
+.education-icon,
+.cert-icon,
+.achievement-icon,
+.contact-icon {
+  color: var(--accent-blue);
+  font-size: 1.2em;
+  margin-right: 8px;
+}
+
+/* Company Logos / Project Thumbnails */
+.company-logo,
+.project-thumbnail {
+  width: 80px; /* Adjust size as needed */
+  height: auto;
+  float: right; /* Position to the right */
+  margin-left: 15px;
+  margin-bottom: 10px; /* Space below if text wraps */
+  border-radius: 8px;
+  object-fit: contain; /* Good for logos */
+  background-color: rgba(255, 255, 255, 0.1); /* Slight background for contrast */
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.project-thumbnail {
+  width: 120px; /* Larger for project thumbnails */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.company-logo:hover,
+.project-thumbnail:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.4), 0 0 10px rgba(0, 188, 212, 0.5);
+}
+
+/* Clear float after images in certain contexts */
+.experience-item::after,
+.project-item::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* --- Responsive Adjustments for Images --- */
+@media (max-width: 768px) {
+  .profile-pic {
+      width: 120px;
+      height: 120px;
+  }
+
+  .company-logo,
+  .project-thumbnail {
+      float: none; /* Stack vertically on small screens */
+      display: block;
+      margin: 15px auto; /* Center them */
+      width: 60px; /* Smaller for mobile */
+  }
+  .project-thumbnail {
+      width: 100px;
+  }
+}
+
+/* Rest of previous CSS remains unchanged */
